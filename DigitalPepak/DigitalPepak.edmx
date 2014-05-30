@@ -1,0 +1,264 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="DigitalPepakModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityContainer Name="DigitalPepakModelStoreContainer">
+          <EntitySet Name="Hanacaraka" EntityType="DigitalPepakModel.Store.Hanacaraka" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="KawruhBasa" EntityType="DigitalPepakModel.Store.KawruhBasa" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Kewan" EntityType="DigitalPepakModel.Store.Kewan" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Paramasastra" EntityType="DigitalPepakModel.Store.Paramasastra" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Paribasan" EntityType="DigitalPepakModel.Store.Paribasan" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Parikan" EntityType="DigitalPepakModel.Store.Parikan" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Wayang" EntityType="DigitalPepakModel.Store.Wayang" store:Type="Tables" Schema="dbo" />
+        </EntityContainer>
+        <EntityType Name="Hanacaraka">
+          <Key>
+            <PropertyRef Name="HanacarakaId" />
+          </Key>
+          <Property Name="HanacarakaId" Type="int" Nullable="false" />
+          <Property Name="Aksara" Type="varchar" MaxLength="50" />
+          <Property Name="GambarURL" Type="varchar" MaxLength="150" />
+          <Property Name="SuaraURL" Type="varchar" MaxLength="150" />
+        </EntityType>
+        <EntityType Name="KawruhBasa">
+          <Key>
+            <PropertyRef Name="KawruhBasaId" />
+          </Key>
+          <Property Name="KawruhBasaId" Type="int" Nullable="false" />
+          <Property Name="Tembung" Type="varchar" MaxLength="50" />
+          <Property Name="PodhoTegese" Type="varchar" MaxLength="50" />
+          <Property Name="KosokBalen" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Kewan">
+          <Key>
+            <PropertyRef Name="KewanId" />
+          </Key>
+          <Property Name="KewanId" Type="int" Nullable="false" />
+          <Property Name="JenengKewan" Type="varchar" MaxLength="50" />
+          <Property Name="AnakeKewan" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Paramasastra">
+          <Key>
+            <PropertyRef Name="ParamasastraId" />
+          </Key>
+          <Property Name="ParamasastraId" Type="int" Nullable="false" />
+          <Property Name="Ngoko" Type="varchar" MaxLength="50" />
+          <Property Name="Madya" Type="varchar" MaxLength="50" />
+          <Property Name="Inggil" Type="varchar" MaxLength="50" />
+          <Property Name="Indonesia" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Paribasan">
+          <Key>
+            <PropertyRef Name="ParibasanId" />
+          </Key>
+          <Property Name="ParibasanId" Type="int" Nullable="false" />
+          <Property Name="IsiParibasan" Type="varchar" MaxLength="300" />
+          <Property Name="Artine" Type="varchar" MaxLength="300" />
+        </EntityType>
+        <EntityType Name="Parikan">
+          <Key>
+            <PropertyRef Name="ParikanId" />
+          </Key>
+          <Property Name="ParikanId" Type="int" Nullable="false" />
+          <Property Name="IsiParikan" Type="varchar" MaxLength="300" />
+        </EntityType>
+        <EntityType Name="Wayang">
+          <Key>
+            <PropertyRef Name="WayangId" />
+          </Key>
+          <Property Name="WayangId" Type="int" Nullable="false" />
+          <Property Name="JenengWayang" Type="varchar" MaxLength="50" />
+          <Property Name="GambarURL" Type="varchar" MaxLength="150" />
+        </EntityType>
+        <Function Name="GetNewHanacarakaId" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="GetNewKawruhBasaId" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="GetNewKewanId" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="GetNewParamasastraId" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="GetNewParibasanId" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="GetNewParikanId" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="GetNewWayangId" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="DigitalPepakModel" Alias="Self" p1:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:p1="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="DigitalPepakEntities" p1:LazyLoadingEnabled="true">
+          <EntitySet Name="Hanacarakas" EntityType="DigitalPepakModel.Hanacaraka" />
+          <EntitySet Name="KawruhBasas" EntityType="DigitalPepakModel.KawruhBasa" />
+          <EntitySet Name="Kewans" EntityType="DigitalPepakModel.Kewan" />
+          <EntitySet Name="Paramasastras" EntityType="DigitalPepakModel.Paramasastra" />
+          <EntitySet Name="Paribasans" EntityType="DigitalPepakModel.Paribasan" />
+          <EntitySet Name="Parikans" EntityType="DigitalPepakModel.Parikan" />
+          <EntitySet Name="Wayangs" EntityType="DigitalPepakModel.Wayang" />
+          <FunctionImport Name="GetNewHanacarakaId" ReturnType="Collection(Int32)" />
+          <FunctionImport Name="GetNewKawruhBasaId" ReturnType="Collection(Int32)" />
+          <FunctionImport Name="GetNewKewanId" ReturnType="Collection(Int32)" />
+          <FunctionImport Name="GetNewParamasastraId" ReturnType="Collection(Int32)" />
+          <FunctionImport Name="GetNewParibasanId" ReturnType="Collection(Int32)" />
+          <FunctionImport Name="GetNewParikanId" ReturnType="Collection(Int32)" />
+          <FunctionImport Name="GetNewWayangId" ReturnType="Collection(Int32)" />
+        </EntityContainer>
+        <EntityType Name="Hanacaraka">
+          <Key>
+            <PropertyRef Name="HanacarakaId" />
+          </Key>
+          <Property Name="HanacarakaId" Type="Int32" Nullable="false" />
+          <Property Name="Aksara" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="GambarURL" Type="String" MaxLength="150" Unicode="false" FixedLength="false" />
+          <Property Name="SuaraURL" Type="String" MaxLength="150" Unicode="false" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="KawruhBasa">
+          <Key>
+            <PropertyRef Name="KawruhBasaId" />
+          </Key>
+          <Property Name="KawruhBasaId" Type="Int32" Nullable="false" />
+          <Property Name="Tembung" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="PodhoTegese" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="KosokBalen" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="Kewan">
+          <Key>
+            <PropertyRef Name="KewanId" />
+          </Key>
+          <Property Name="KewanId" Type="Int32" Nullable="false" />
+          <Property Name="JenengKewan" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="AnakeKewan" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="Paramasastra">
+          <Key>
+            <PropertyRef Name="ParamasastraId" />
+          </Key>
+          <Property Name="ParamasastraId" Type="Int32" Nullable="false" />
+          <Property Name="Ngoko" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="Madya" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="Inggil" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="Indonesia" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="Paribasan">
+          <Key>
+            <PropertyRef Name="ParibasanId" />
+          </Key>
+          <Property Name="ParibasanId" Type="Int32" Nullable="false" />
+          <Property Name="IsiParibasan" Type="String" MaxLength="300" Unicode="false" FixedLength="false" />
+          <Property Name="Artine" Type="String" MaxLength="300" Unicode="false" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="Parikan">
+          <Key>
+            <PropertyRef Name="ParikanId" />
+          </Key>
+          <Property Name="ParikanId" Type="Int32" Nullable="false" />
+          <Property Name="IsiParikan" Type="String" MaxLength="300" Unicode="false" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="Wayang">
+          <Key>
+            <PropertyRef Name="WayangId" />
+          </Key>
+          <Property Name="WayangId" Type="Int32" Nullable="false" />
+          <Property Name="JenengWayang" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="GambarURL" Type="String" MaxLength="150" Unicode="false" FixedLength="false" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="DigitalPepakModelStoreContainer" CdmEntityContainer="DigitalPepakEntities">
+          <EntitySetMapping Name="Hanacarakas">
+            <EntityTypeMapping TypeName="DigitalPepakModel.Hanacaraka">
+              <MappingFragment StoreEntitySet="Hanacaraka">
+                <ScalarProperty Name="HanacarakaId" ColumnName="HanacarakaId" />
+                <ScalarProperty Name="Aksara" ColumnName="Aksara" />
+                <ScalarProperty Name="GambarURL" ColumnName="GambarURL" />
+                <ScalarProperty Name="SuaraURL" ColumnName="SuaraURL" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="KawruhBasas">
+            <EntityTypeMapping TypeName="DigitalPepakModel.KawruhBasa">
+              <MappingFragment StoreEntitySet="KawruhBasa">
+                <ScalarProperty Name="KawruhBasaId" ColumnName="KawruhBasaId" />
+                <ScalarProperty Name="Tembung" ColumnName="Tembung" />
+                <ScalarProperty Name="PodhoTegese" ColumnName="PodhoTegese" />
+                <ScalarProperty Name="KosokBalen" ColumnName="KosokBalen" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Kewans">
+            <EntityTypeMapping TypeName="DigitalPepakModel.Kewan">
+              <MappingFragment StoreEntitySet="Kewan">
+                <ScalarProperty Name="KewanId" ColumnName="KewanId" />
+                <ScalarProperty Name="JenengKewan" ColumnName="JenengKewan" />
+                <ScalarProperty Name="AnakeKewan" ColumnName="AnakeKewan" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Paramasastras">
+            <EntityTypeMapping TypeName="DigitalPepakModel.Paramasastra">
+              <MappingFragment StoreEntitySet="Paramasastra">
+                <ScalarProperty Name="ParamasastraId" ColumnName="ParamasastraId" />
+                <ScalarProperty Name="Ngoko" ColumnName="Ngoko" />
+                <ScalarProperty Name="Madya" ColumnName="Madya" />
+                <ScalarProperty Name="Inggil" ColumnName="Inggil" />
+                <ScalarProperty Name="Indonesia" ColumnName="Indonesia" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Paribasans">
+            <EntityTypeMapping TypeName="DigitalPepakModel.Paribasan">
+              <MappingFragment StoreEntitySet="Paribasan">
+                <ScalarProperty Name="ParibasanId" ColumnName="ParibasanId" />
+                <ScalarProperty Name="IsiParibasan" ColumnName="IsiParibasan" />
+                <ScalarProperty Name="Artine" ColumnName="Artine" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Parikans">
+            <EntityTypeMapping TypeName="DigitalPepakModel.Parikan">
+              <MappingFragment StoreEntitySet="Parikan">
+                <ScalarProperty Name="ParikanId" ColumnName="ParikanId" />
+                <ScalarProperty Name="IsiParikan" ColumnName="IsiParikan" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Wayangs">
+            <EntityTypeMapping TypeName="DigitalPepakModel.Wayang">
+              <MappingFragment StoreEntitySet="Wayang">
+                <ScalarProperty Name="WayangId" ColumnName="WayangId" />
+                <ScalarProperty Name="JenengWayang" ColumnName="JenengWayang" />
+                <ScalarProperty Name="GambarURL" ColumnName="GambarURL" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="GetNewHanacarakaId" FunctionName="DigitalPepakModel.Store.GetNewHanacarakaId" />
+          <FunctionImportMapping FunctionImportName="GetNewKawruhBasaId" FunctionName="DigitalPepakModel.Store.GetNewKawruhBasaId" />
+          <FunctionImportMapping FunctionImportName="GetNewKewanId" FunctionName="DigitalPepakModel.Store.GetNewKewanId" />
+          <FunctionImportMapping FunctionImportName="GetNewParamasastraId" FunctionName="DigitalPepakModel.Store.GetNewParamasastraId" />
+          <FunctionImportMapping FunctionImportName="GetNewParibasanId" FunctionName="DigitalPepakModel.Store.GetNewParibasanId" />
+          <FunctionImportMapping FunctionImportName="GetNewParikanId" FunctionName="DigitalPepakModel.Store.GetNewParikanId" />
+          <FunctionImportMapping FunctionImportName="GetNewWayangId" FunctionName="DigitalPepakModel.Store.GetNewWayangId" />
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="True" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

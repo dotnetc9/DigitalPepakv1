@@ -1,0 +1,40 @@
+﻿@model IEnumerable<DigitalPepak.Wayang>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutWayang.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.JenengWayang)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.GambarURL)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.JenengWayang)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.GambarURL)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.WayangId }) |
+            @Html.ActionLink("Details", "Details", new { id=item.WayangId }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.WayangId })
+        </td>
+    </tr>
+}
+
+</table>

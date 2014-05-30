@@ -1,0 +1,43 @@
+﻿@model DigitalPepak.KawruhBasa
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_LayoutKawruhBasa.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>KawruhBasa</h4>
+	<hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Tembung)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Tembung)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PodhoTegese)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PodhoTegese)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.KosokBalen)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.KosokBalen)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.KawruhBasaId }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

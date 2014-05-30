@@ -1,0 +1,27 @@
+﻿@model DigitalPepak.Parikan
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_LayoutParikan.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Parikan</h4>
+	<hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.IsiParikan)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.IsiParikan)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.ParikanId }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

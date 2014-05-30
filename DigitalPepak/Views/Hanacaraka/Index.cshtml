@@ -1,0 +1,46 @@
+﻿@model IEnumerable<DigitalPepak.Hanacaraka>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutHanacaraka.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Aksara)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.GambarURL)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.SuaraURL)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Aksara)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.GambarURL)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.SuaraURL)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.HanacarakaId }) |
+            @Html.ActionLink("Details", "Details", new { id=item.HanacarakaId }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.HanacarakaId })
+        </td>
+    </tr>
+}
+
+</table>

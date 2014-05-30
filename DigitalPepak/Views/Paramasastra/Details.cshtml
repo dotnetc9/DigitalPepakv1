@@ -1,0 +1,51 @@
+﻿@model DigitalPepak.Paramasastra
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_LayoutParamasastra.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Paramasastra</h4>
+	<hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Ngoko)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Ngoko)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Madya)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Madya)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Inggil)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Inggil)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Indonesia)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Indonesia)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.ParamasastraId }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

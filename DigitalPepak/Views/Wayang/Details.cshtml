@@ -1,0 +1,35 @@
+﻿@model DigitalPepak.Wayang
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_LayoutWayang.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Wayang</h4>
+	<hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.JenengWayang)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.JenengWayang)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.GambarURL)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.GambarURL)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.WayangId }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

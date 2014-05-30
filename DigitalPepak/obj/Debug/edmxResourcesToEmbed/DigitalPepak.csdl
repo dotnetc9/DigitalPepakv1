@@ -1,0 +1,78 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="DigitalPepakModel" Alias="Self" p1:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:p1="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityContainer Name="DigitalPepakEntities" p1:LazyLoadingEnabled="true">
+    <EntitySet Name="Hanacarakas" EntityType="DigitalPepakModel.Hanacaraka" />
+    <EntitySet Name="KawruhBasas" EntityType="DigitalPepakModel.KawruhBasa" />
+    <EntitySet Name="Kewans" EntityType="DigitalPepakModel.Kewan" />
+    <EntitySet Name="Paramasastras" EntityType="DigitalPepakModel.Paramasastra" />
+    <EntitySet Name="Paribasans" EntityType="DigitalPepakModel.Paribasan" />
+    <EntitySet Name="Parikans" EntityType="DigitalPepakModel.Parikan" />
+    <EntitySet Name="Wayangs" EntityType="DigitalPepakModel.Wayang" />
+    <FunctionImport Name="GetNewHanacarakaId" ReturnType="Collection(Int32)" />
+    <FunctionImport Name="GetNewKawruhBasaId" ReturnType="Collection(Int32)" />
+    <FunctionImport Name="GetNewKewanId" ReturnType="Collection(Int32)" />
+    <FunctionImport Name="GetNewParamasastraId" ReturnType="Collection(Int32)" />
+    <FunctionImport Name="GetNewParibasanId" ReturnType="Collection(Int32)" />
+    <FunctionImport Name="GetNewParikanId" ReturnType="Collection(Int32)" />
+    <FunctionImport Name="GetNewWayangId" ReturnType="Collection(Int32)" />
+  </EntityContainer>
+  <EntityType Name="Hanacaraka">
+    <Key>
+      <PropertyRef Name="HanacarakaId" />
+    </Key>
+    <Property Name="HanacarakaId" Type="Int32" Nullable="false" />
+    <Property Name="Aksara" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="GambarURL" Type="String" MaxLength="150" Unicode="false" FixedLength="false" />
+    <Property Name="SuaraURL" Type="String" MaxLength="150" Unicode="false" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="KawruhBasa">
+    <Key>
+      <PropertyRef Name="KawruhBasaId" />
+    </Key>
+    <Property Name="KawruhBasaId" Type="Int32" Nullable="false" />
+    <Property Name="Tembung" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="PodhoTegese" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="KosokBalen" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="Kewan">
+    <Key>
+      <PropertyRef Name="KewanId" />
+    </Key>
+    <Property Name="KewanId" Type="Int32" Nullable="false" />
+    <Property Name="JenengKewan" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="AnakeKewan" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="Paramasastra">
+    <Key>
+      <PropertyRef Name="ParamasastraId" />
+    </Key>
+    <Property Name="ParamasastraId" Type="Int32" Nullable="false" />
+    <Property Name="Ngoko" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="Madya" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="Inggil" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="Indonesia" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="Paribasan">
+    <Key>
+      <PropertyRef Name="ParibasanId" />
+    </Key>
+    <Property Name="ParibasanId" Type="Int32" Nullable="false" />
+    <Property Name="IsiParibasan" Type="String" MaxLength="300" Unicode="false" FixedLength="false" />
+    <Property Name="Artine" Type="String" MaxLength="300" Unicode="false" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="Parikan">
+    <Key>
+      <PropertyRef Name="ParikanId" />
+    </Key>
+    <Property Name="ParikanId" Type="Int32" Nullable="false" />
+    <Property Name="IsiParikan" Type="String" MaxLength="300" Unicode="false" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="Wayang">
+    <Key>
+      <PropertyRef Name="WayangId" />
+    </Key>
+    <Property Name="WayangId" Type="Int32" Nullable="false" />
+    <Property Name="JenengWayang" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="GambarURL" Type="String" MaxLength="150" Unicode="false" FixedLength="false" />
+  </EntityType>
+</Schema>

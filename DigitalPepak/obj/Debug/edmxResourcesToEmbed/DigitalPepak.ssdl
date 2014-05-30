@@ -1,0 +1,78 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="DigitalPepakModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityContainer Name="DigitalPepakModelStoreContainer">
+    <EntitySet Name="Hanacaraka" EntityType="DigitalPepakModel.Store.Hanacaraka" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="KawruhBasa" EntityType="DigitalPepakModel.Store.KawruhBasa" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Kewan" EntityType="DigitalPepakModel.Store.Kewan" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Paramasastra" EntityType="DigitalPepakModel.Store.Paramasastra" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Paribasan" EntityType="DigitalPepakModel.Store.Paribasan" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Parikan" EntityType="DigitalPepakModel.Store.Parikan" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Wayang" EntityType="DigitalPepakModel.Store.Wayang" store:Type="Tables" Schema="dbo" />
+  </EntityContainer>
+  <EntityType Name="Hanacaraka">
+    <Key>
+      <PropertyRef Name="HanacarakaId" />
+    </Key>
+    <Property Name="HanacarakaId" Type="int" Nullable="false" />
+    <Property Name="Aksara" Type="varchar" MaxLength="50" />
+    <Property Name="GambarURL" Type="varchar" MaxLength="150" />
+    <Property Name="SuaraURL" Type="varchar" MaxLength="150" />
+  </EntityType>
+  <EntityType Name="KawruhBasa">
+    <Key>
+      <PropertyRef Name="KawruhBasaId" />
+    </Key>
+    <Property Name="KawruhBasaId" Type="int" Nullable="false" />
+    <Property Name="Tembung" Type="varchar" MaxLength="50" />
+    <Property Name="PodhoTegese" Type="varchar" MaxLength="50" />
+    <Property Name="KosokBalen" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="Kewan">
+    <Key>
+      <PropertyRef Name="KewanId" />
+    </Key>
+    <Property Name="KewanId" Type="int" Nullable="false" />
+    <Property Name="JenengKewan" Type="varchar" MaxLength="50" />
+    <Property Name="AnakeKewan" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="Paramasastra">
+    <Key>
+      <PropertyRef Name="ParamasastraId" />
+    </Key>
+    <Property Name="ParamasastraId" Type="int" Nullable="false" />
+    <Property Name="Ngoko" Type="varchar" MaxLength="50" />
+    <Property Name="Madya" Type="varchar" MaxLength="50" />
+    <Property Name="Inggil" Type="varchar" MaxLength="50" />
+    <Property Name="Indonesia" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="Paribasan">
+    <Key>
+      <PropertyRef Name="ParibasanId" />
+    </Key>
+    <Property Name="ParibasanId" Type="int" Nullable="false" />
+    <Property Name="IsiParibasan" Type="varchar" MaxLength="300" />
+    <Property Name="Artine" Type="varchar" MaxLength="300" />
+  </EntityType>
+  <EntityType Name="Parikan">
+    <Key>
+      <PropertyRef Name="ParikanId" />
+    </Key>
+    <Property Name="ParikanId" Type="int" Nullable="false" />
+    <Property Name="IsiParikan" Type="varchar" MaxLength="300" />
+  </EntityType>
+  <EntityType Name="Wayang">
+    <Key>
+      <PropertyRef Name="WayangId" />
+    </Key>
+    <Property Name="WayangId" Type="int" Nullable="false" />
+    <Property Name="JenengWayang" Type="varchar" MaxLength="50" />
+    <Property Name="GambarURL" Type="varchar" MaxLength="150" />
+  </EntityType>
+  <Function Name="GetNewHanacarakaId" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="GetNewKawruhBasaId" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="GetNewKewanId" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="GetNewParamasastraId" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="GetNewParibasanId" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="GetNewParikanId" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="GetNewWayangId" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+</Schema>

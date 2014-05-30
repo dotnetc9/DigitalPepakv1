@@ -1,0 +1,49 @@
+﻿@model DigitalPepak.KawruhBasa
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Views/Shared/_LayoutKawruhBasa.cshtml";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>KawruhBasa</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Tembung)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Tembung)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PodhoTegese)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PodhoTegese)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.KosokBalen)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.KosokBalen)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>

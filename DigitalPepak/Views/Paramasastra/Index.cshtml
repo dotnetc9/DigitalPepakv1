@@ -1,0 +1,52 @@
+﻿@model IEnumerable<DigitalPepak.Paramasastra>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutParamasastra.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Ngoko)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Madya)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Inggil)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Indonesia)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Ngoko)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Madya)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Inggil)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Indonesia)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.ParamasastraId }) |
+            @Html.ActionLink("Details", "Details", new { id=item.ParamasastraId }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.ParamasastraId })
+        </td>
+    </tr>
+}
+
+</table>
