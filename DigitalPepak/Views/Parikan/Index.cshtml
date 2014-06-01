@@ -1,15 +1,12 @@
 ﻿@model IEnumerable<DigitalPepak.Parikan>
 
 @{
-    ViewBag.Title = "Parikan";
+    ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_LayoutParikan.cshtml";
 }
 
-<br />
-        <div class="jumbotron">
-            <h1>Parikan</h1>
-            <p>Parikan yaiku unen – unen kang dumadi saka rong ukara. Ukara sepisanan kanggo narik kawigaten, lan ukara kapindho minangka isi.</p>
-        </div>
+<h2>Index</h2>
+
 <p>
     @Html.ActionLink("Create New", "Create")
 </p>
@@ -18,6 +15,9 @@
         <th>
             @Html.DisplayNameFor(model => model.IsiParikan)
         </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Kategori.Jenis)
+        </th>
         <th></th>
     </tr>
 
@@ -25,6 +25,9 @@
     <tr>
         <td>
             @Html.DisplayFor(modelItem => item.IsiParikan)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Kategori.Jenis)
         </td>
         <td>
             @Html.ActionLink("Edit", "Edit", new { id=item.ParikanId }) |

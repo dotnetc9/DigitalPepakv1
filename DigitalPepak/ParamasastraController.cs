@@ -11,12 +11,13 @@ namespace DigitalPepak
 {
     public class ParamasastraController : Controller
     {
-        private DigitalPepakEntities db = new DigitalPepakEntities();
+        private DigitalPepakEntities1 db = new DigitalPepakEntities1();
 
         // GET: /Paramasastra/
         public ActionResult Index()
         {
-            return View(db.Paramasastras.ToList());
+            var paramasastras = db.Paramasastras.Include(p => p.Kategori);
+            return View(paramasastras.ToList());
         }
 
         // GET: /Paramasastra/Details/5
@@ -37,6 +38,7 @@ namespace DigitalPepak
         // GET: /Paramasastra/Create
         public ActionResult Create()
         {
+            ViewBag.KategoriId = new SelectList(db.Kategoris, "KategoriId", "Jenis");
             return View();
         }
 
@@ -45,7 +47,7 @@ namespace DigitalPepak
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include="ParamasastraId,Ngoko,Madya,Inggil,Indonesia")] Paramasastra paramasastra)
+        public ActionResult Create([Bind(Include="ParamasastraId,Ngoko,Madya,Inggil,Indonesia,KategoriId")] Paramasastra paramasastra)
         {
             if (ModelState.IsValid)
             {
@@ -54,6 +56,7 @@ namespace DigitalPepak
                 return RedirectToAction("Index");
             }
 
+            ViewBag.KategoriId = new SelectList(db.Kategoris, "KategoriId", "Jenis", paramasastra.KategoriId);
             return View(paramasastra);
         }
 
@@ -69,6 +72,7 @@ namespace DigitalPepak
             {
                 return HttpNotFound();
             }
+            ViewBag.KategoriId = new SelectList(db.Kategoris, "KategoriId", "Jenis", paramasastra.KategoriId);
             return View(paramasastra);
         }
 
@@ -77,7 +81,7 @@ namespace DigitalPepak
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include="ParamasastraId,Ngoko,Madya,Inggil,Indonesia")] Paramasastra paramasastra)
+        public ActionResult Edit([Bind(Include="ParamasastraId,Ngoko,Madya,Inggil,Indonesia,KategoriId")] Paramasastra paramasastra)
         {
             if (ModelState.IsValid)
             {
@@ -85,6 +89,7 @@ namespace DigitalPepak
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
+            ViewBag.KategoriId = new SelectList(db.Kategoris, "KategoriId", "Jenis", paramasastra.KategoriId);
             return View(paramasastra);
         }
 

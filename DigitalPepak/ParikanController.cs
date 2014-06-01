@@ -11,12 +11,13 @@ namespace DigitalPepak
 {
     public class ParikanController : Controller
     {
-        private DigitalPepakEntities db = new DigitalPepakEntities();
+        private DigitalPepakEntities1 db = new DigitalPepakEntities1();
 
         // GET: /Parikan/
         public ActionResult Index()
         {
-            return View(db.Parikans.ToList());
+            var parikans = db.Parikans.Include(p => p.Kategori);
+            return View(parikans.ToList());
         }
 
         // GET: /Parikan/Details/5
@@ -37,6 +38,7 @@ namespace DigitalPepak
         // GET: /Parikan/Create
         public ActionResult Create()
         {
+            ViewBag.KategoriId = new SelectList(db.Kategoris, "KategoriId", "Jenis");
             return View();
         }
 
@@ -45,7 +47,7 @@ namespace DigitalPepak
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include="ParikanId,IsiParikan")] Parikan parikan)
+        public ActionResult Create([Bind(Include="ParikanId,IsiParikan,KategoriId")] Parikan parikan)
         {
             if (ModelState.IsValid)
             {
@@ -54,6 +56,7 @@ namespace DigitalPepak
                 return RedirectToAction("Index");
             }
 
+            ViewBag.KategoriId = new SelectList(db.Kategoris, "KategoriId", "Jenis", parikan.KategoriId);
             return View(parikan);
         }
 
@@ -69,6 +72,7 @@ namespace DigitalPepak
             {
                 return HttpNotFound();
             }
+            ViewBag.KategoriId = new SelectList(db.Kategoris, "KategoriId", "Jenis", parikan.KategoriId);
             return View(parikan);
         }
 
@@ -77,7 +81,7 @@ namespace DigitalPepak
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include="ParikanId,IsiParikan")] Parikan parikan)
+        public ActionResult Edit([Bind(Include="ParikanId,IsiParikan,KategoriId")] Parikan parikan)
         {
             if (ModelState.IsValid)
             {
@@ -85,6 +89,7 @@ namespace DigitalPepak
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
+            ViewBag.KategoriId = new SelectList(db.Kategoris, "KategoriId", "Jenis", parikan.KategoriId);
             return View(parikan);
         }
 

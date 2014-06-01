@@ -18,6 +18,9 @@
         <th>
             @Html.DisplayNameFor(model => model.GambarURL)
         </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Kategori.Jenis)
+        </th>
         <th></th>
     </tr>
 
@@ -28,6 +31,9 @@
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.GambarURL)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Kategori.Jenis)
         </td>
         <td>
             @Html.ActionLink("Edit", "Edit", new { id=item.WayangId }) |

@@ -100,6 +100,7 @@
     <Content Include="fonts\glyphicons-halflings-regular.eot" />
     <Content Include="Content\bootstrap-theme.css.map" />
     <Content Include="Content\bootstrap.css.map" />
+    <Content Include="Scripts\jquery-1.10.2.js" />
     <EntityDeploy Include="DigitalPepak.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>DigitalPepak.Designer.cs</LastGenOutput>
@@ -117,7 +118,6 @@
       <DependentUpon>DigitalPepak.edmx</DependentUpon>
       <LastGenOutput>DigitalPepak.cs</LastGenOutput>
     </Content>
-    <Content Include="Scripts\jquery-1.10.2.js" />
     <None Include="Scripts\jquery-1.9.1.intellisense.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
@@ -134,6 +134,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="DetailKui.cs">
+      <DependentUpon>DigitalPepak.tt</DependentUpon>
+    </Compile>
     <Compile Include="DigitalPepak.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -156,6 +159,9 @@
       <DependentUpon>DigitalPepak.tt</DependentUpon>
     </Compile>
     <Compile Include="HanacarakaController.cs" />
+    <Compile Include="Kategori.cs">
+      <DependentUpon>DigitalPepak.tt</DependentUpon>
+    </Compile>
     <Compile Include="KawruhBasa.cs">
       <DependentUpon>DigitalPepak.tt</DependentUpon>
     </Compile>
@@ -164,6 +170,9 @@
       <DependentUpon>DigitalPepak.tt</DependentUpon>
     </Compile>
     <Compile Include="KewanController.cs" />
+    <Compile Include="Kui.cs">
+      <DependentUpon>DigitalPepak.tt</DependentUpon>
+    </Compile>
     <Compile Include="Paramasastra.cs">
       <DependentUpon>DigitalPepak.tt</DependentUpon>
     </Compile>
@@ -177,6 +186,12 @@
     </Compile>
     <Compile Include="ParikanController.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Soal.cs">
+      <DependentUpon>DigitalPepak.tt</DependentUpon>
+    </Compile>
+    <Compile Include="UserDigipak.cs">
+      <DependentUpon>DigitalPepak.tt</DependentUpon>
+    </Compile>
     <Compile Include="Wayang.cs">
       <DependentUpon>DigitalPepak.tt</DependentUpon>
     </Compile>
@@ -189,17 +204,13 @@
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Shared\_LayoutParibasan.cshtml" />
-    <Content Include="Views\Paribasan\Create.cshtml" />
-    <Content Include="Views\Paribasan\Delete.cshtml" />
-    <Content Include="Views\Paribasan\Details.cshtml" />
-    <Content Include="Views\Paribasan\Edit.cshtml" />
-    <Content Include="Views\Paribasan\Index.cshtml" />
     <Content Include="Views\Shared\_LayoutHanacaraka.cshtml" />
     <Content Include="Views\Shared\_LayoutKawruhBasa.cshtml" />
     <Content Include="Views\Shared\_LayoutParamasastra.cshtml" />
     <Content Include="Views\Shared\_LayoutKewan.cshtml" />
     <Content Include="Views\Shared\_LayoutParikan.cshtml" />
     <Content Include="Views\Shared\_LayoutWayang.cshtml" />
+    <Content Include="Views\Shared\_LayoutHomeParallax.cshtml" />
     <Content Include="Views\Hanacaraka\Create.cshtml" />
     <Content Include="Views\Hanacaraka\Delete.cshtml" />
     <Content Include="Views\Hanacaraka\Details.cshtml" />
@@ -220,6 +231,11 @@
     <Content Include="Views\Paramasastra\Details.cshtml" />
     <Content Include="Views\Paramasastra\Edit.cshtml" />
     <Content Include="Views\Paramasastra\Index.cshtml" />
+    <Content Include="Views\Paribasan\Create.cshtml" />
+    <Content Include="Views\Paribasan\Delete.cshtml" />
+    <Content Include="Views\Paribasan\Details.cshtml" />
+    <Content Include="Views\Paribasan\Edit.cshtml" />
+    <Content Include="Views\Paribasan\Index.cshtml" />
     <Content Include="Views\Parikan\Create.cshtml" />
     <Content Include="Views\Parikan\Delete.cshtml" />
     <Content Include="Views\Parikan\Details.cshtml" />
@@ -230,7 +246,6 @@
     <Content Include="Views\Wayang\Details.cshtml" />
     <Content Include="Views\Wayang\Edit.cshtml" />
     <Content Include="Views\Wayang\Index.cshtml" />
-    <Content Include="Views\Shared\_LayoutHomeParallax.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -241,6 +256,7 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Controllers\" />
+    <Folder Include="Images\" />
     <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>

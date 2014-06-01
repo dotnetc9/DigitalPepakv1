@@ -2,7 +2,7 @@
 
 @{
     ViewBag.Title = "Index";
-    Layout = "~/Views/Shared/_LayoutHanacaraka.cshtml";
+    Layout = "~/Views/Shared/_LayoutHomeParallax.cshtml";
 }
 
 <h2>Index</h2>
@@ -19,7 +19,7 @@
             @Html.DisplayNameFor(model => model.GambarURL)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.SuaraURL)
+            @Html.DisplayNameFor(model => model.Kategori.Jenis)
         </th>
         <th></th>
     </tr>
@@ -33,7 +33,7 @@
             @Html.DisplayFor(modelItem => item.GambarURL)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.SuaraURL)
+            @Html.DisplayFor(modelItem => item.Kategori.Jenis)
         </td>
         <td>
             @Html.ActionLink("Edit", "Edit", new { id=item.HanacarakaId }) |

@@ -1,21 +1,84 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Schema Namespace="DigitalPepakModel" Alias="Self" p1:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:p1="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
-  <EntityContainer Name="DigitalPepakEntities" p1:LazyLoadingEnabled="true">
+  <EntityContainer Name="DigitalPepakEntities1" p1:LazyLoadingEnabled="true">
+    <EntitySet Name="DetailKuis" EntityType="DigitalPepakModel.DetailKui" />
     <EntitySet Name="Hanacarakas" EntityType="DigitalPepakModel.Hanacaraka" />
+    <EntitySet Name="Kategoris" EntityType="DigitalPepakModel.Kategori" />
     <EntitySet Name="KawruhBasas" EntityType="DigitalPepakModel.KawruhBasa" />
     <EntitySet Name="Kewans" EntityType="DigitalPepakModel.Kewan" />
+    <EntitySet Name="Kuis" EntityType="DigitalPepakModel.Kui" />
     <EntitySet Name="Paramasastras" EntityType="DigitalPepakModel.Paramasastra" />
     <EntitySet Name="Paribasans" EntityType="DigitalPepakModel.Paribasan" />
     <EntitySet Name="Parikans" EntityType="DigitalPepakModel.Parikan" />
+    <EntitySet Name="Soals" EntityType="DigitalPepakModel.Soal" />
+    <EntitySet Name="UserDigipaks" EntityType="DigitalPepakModel.UserDigipak" />
     <EntitySet Name="Wayangs" EntityType="DigitalPepakModel.Wayang" />
+    <AssociationSet Name="FK_DetailKuis_Kuis" Association="DigitalPepakModel.FK_DetailKuis_Kuis">
+      <End Role="Kuis" EntitySet="Kuis" />
+      <End Role="DetailKuis" EntitySet="DetailKuis" />
+    </AssociationSet>
+    <AssociationSet Name="FK_DetailKuis_Soal" Association="DigitalPepakModel.FK_DetailKuis_Soal">
+      <End Role="Soal" EntitySet="Soals" />
+      <End Role="DetailKuis" EntitySet="DetailKuis" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Hanacaraka_Kategori" Association="DigitalPepakModel.FK_Hanacaraka_Kategori">
+      <End Role="Kategori" EntitySet="Kategoris" />
+      <End Role="Hanacaraka" EntitySet="Hanacarakas" />
+    </AssociationSet>
+    <AssociationSet Name="FK_KawruhBasa_Kategori" Association="DigitalPepakModel.FK_KawruhBasa_Kategori">
+      <End Role="Kategori" EntitySet="Kategoris" />
+      <End Role="KawruhBasa" EntitySet="KawruhBasas" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Kewan_Kategori" Association="DigitalPepakModel.FK_Kewan_Kategori">
+      <End Role="Kategori" EntitySet="Kategoris" />
+      <End Role="Kewan" EntitySet="Kewans" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Kuis_Kategori" Association="DigitalPepakModel.FK_Kuis_Kategori">
+      <End Role="Kategori" EntitySet="Kategoris" />
+      <End Role="Soal" EntitySet="Soals" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Paramasastra_Kategori" Association="DigitalPepakModel.FK_Paramasastra_Kategori">
+      <End Role="Kategori" EntitySet="Kategoris" />
+      <End Role="Paramasastra" EntitySet="Paramasastras" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Paribasan_Kategori" Association="DigitalPepakModel.FK_Paribasan_Kategori">
+      <End Role="Kategori" EntitySet="Kategoris" />
+      <End Role="Paribasan" EntitySet="Paribasans" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Parikan_Kategori" Association="DigitalPepakModel.FK_Parikan_Kategori">
+      <End Role="Kategori" EntitySet="Kategoris" />
+      <End Role="Parikan" EntitySet="Parikans" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Wayang_Kategori" Association="DigitalPepakModel.FK_Wayang_Kategori">
+      <End Role="Kategori" EntitySet="Kategoris" />
+      <End Role="Wayang" EntitySet="Wayangs" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Kuis_UserDigipak" Association="DigitalPepakModel.FK_Kuis_UserDigipak">
+      <End Role="UserDigipak" EntitySet="UserDigipaks" />
+      <End Role="Kuis" EntitySet="Kuis" />
+    </AssociationSet>
+    <FunctionImport Name="GetNewDetailKuisId" ReturnType="Collection(Int32)" />
     <FunctionImport Name="GetNewHanacarakaId" ReturnType="Collection(Int32)" />
     <FunctionImport Name="GetNewKawruhBasaId" ReturnType="Collection(Int32)" />
     <FunctionImport Name="GetNewKewanId" ReturnType="Collection(Int32)" />
+    <FunctionImport Name="GetNewKuisId" ReturnType="Collection(Int32)" />
     <FunctionImport Name="GetNewParamasastraId" ReturnType="Collection(Int32)" />
     <FunctionImport Name="GetNewParibasanId" ReturnType="Collection(Int32)" />
     <FunctionImport Name="GetNewParikanId" ReturnType="Collection(Int32)" />
+    <FunctionImport Name="GetNewSoalId" ReturnType="Collection(Int32)" />
+    <FunctionImport Name="GetNewUserId" ReturnType="Collection(Int32)" />
     <FunctionImport Name="GetNewWayangId" ReturnType="Collection(Int32)" />
   </EntityContainer>
+  <EntityType Name="DetailKui">
+    <Key>
+      <PropertyRef Name="DetailKuisId" />
+    </Key>
+    <Property Name="DetailKuisId" Type="Int32" Nullable="false" />
+    <Property Name="KuisId" Type="Int32" />
+    <Property Name="SoalId" Type="Int32" />
+    <NavigationProperty Name="Kui" Relationship="DigitalPepakModel.FK_DetailKuis_Kuis" FromRole="DetailKuis" ToRole="Kuis" />
+    <NavigationProperty Name="Soal" Relationship="DigitalPepakModel.FK_DetailKuis_Soal" FromRole="DetailKuis" ToRole="Soal" />
+  </EntityType>
   <EntityType Name="Hanacaraka">
     <Key>
       <PropertyRef Name="HanacarakaId" />
@@ -23,7 +86,23 @@
     <Property Name="HanacarakaId" Type="Int32" Nullable="false" />
     <Property Name="Aksara" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
     <Property Name="GambarURL" Type="String" MaxLength="150" Unicode="false" FixedLength="false" />
-    <Property Name="SuaraURL" Type="String" MaxLength="150" Unicode="false" FixedLength="false" />
+    <Property Name="KategoriId" Type="Int32" />
+    <NavigationProperty Name="Kategori" Relationship="DigitalPepakModel.FK_Hanacaraka_Kategori" FromRole="Hanacaraka" ToRole="Kategori" />
+  </EntityType>
+  <EntityType Name="Kategori">
+    <Key>
+      <PropertyRef Name="KategoriId" />
+    </Key>
+    <Property Name="KategoriId" Type="Int32" Nullable="false" />
+    <Property Name="Jenis" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+    <NavigationProperty Name="Hanacarakas" Relationship="DigitalPepakModel.FK_Hanacaraka_Kategori" FromRole="Kategori" ToRole="Hanacaraka" />
+    <NavigationProperty Name="KawruhBasas" Relationship="DigitalPepakModel.FK_KawruhBasa_Kategori" FromRole="Kategori" ToRole="KawruhBasa" />
+    <NavigationProperty Name="Kewans" Relationship="DigitalPepakModel.FK_Kewan_Kategori" FromRole="Kategori" ToRole="Kewan" />
+    <NavigationProperty Name="Soals" Relationship="DigitalPepakModel.FK_Kuis_Kategori" FromRole="Kategori" ToRole="Soal" />
+    <NavigationProperty Name="Paramasastras" Relationship="DigitalPepakModel.FK_Paramasastra_Kategori" FromRole="Kategori" ToRole="Paramasastra" />
+    <NavigationProperty Name="Paribasans" Relationship="DigitalPepakModel.FK_Paribasan_Kategori" FromRole="Kategori" ToRole="Paribasan" />
+    <NavigationProperty Name="Parikans" Relationship="DigitalPepakModel.FK_Parikan_Kategori" FromRole="Kategori" ToRole="Parikan" />
+    <NavigationProperty Name="Wayangs" Relationship="DigitalPepakModel.FK_Wayang_Kategori" FromRole="Kategori" ToRole="Wayang" />
   </EntityType>
   <EntityType Name="KawruhBasa">
     <Key>
@@ -33,6 +112,8 @@
     <Property Name="Tembung" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
     <Property Name="PodhoTegese" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
     <Property Name="KosokBalen" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="KategoriId" Type="Int32" />
+    <NavigationProperty Name="Kategori" Relationship="DigitalPepakModel.FK_KawruhBasa_Kategori" FromRole="KawruhBasa" ToRole="Kategori" />
   </EntityType>
   <EntityType Name="Kewan">
     <Key>
@@ -41,6 +122,18 @@
     <Property Name="KewanId" Type="Int32" Nullable="false" />
     <Property Name="JenengKewan" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
     <Property Name="AnakeKewan" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="KategoriId" Type="Int32" />
+    <NavigationProperty Name="Kategori" Relationship="DigitalPepakModel.FK_Kewan_Kategori" FromRole="Kewan" ToRole="Kategori" />
+  </EntityType>
+  <EntityType Name="Kui">
+    <Key>
+      <PropertyRef Name="KuisId" />
+    </Key>
+    <Property Name="KuisId" Type="Int32" Nullable="false" />
+    <Property Name="UserId" Type="Int32" />
+    <Property Name="TotalScore" Type="Int32" />
+    <NavigationProperty Name="DetailKuis" Relationship="DigitalPepakModel.FK_DetailKuis_Kuis" FromRole="Kuis" ToRole="DetailKuis" />
+    <NavigationProperty Name="UserDigipak" Relationship="DigitalPepakModel.FK_Kuis_UserDigipak" FromRole="Kuis" ToRole="UserDigipak" />
   </EntityType>
   <EntityType Name="Paramasastra">
     <Key>
@@ -51,6 +144,8 @@
     <Property Name="Madya" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
     <Property Name="Inggil" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
     <Property Name="Indonesia" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="KategoriId" Type="Int32" />
+    <NavigationProperty Name="Kategori" Relationship="DigitalPepakModel.FK_Paramasastra_Kategori" FromRole="Paramasastra" ToRole="Kategori" />
   </EntityType>
   <EntityType Name="Paribasan">
     <Key>
@@ -59,6 +154,8 @@
     <Property Name="ParibasanId" Type="Int32" Nullable="false" />
     <Property Name="IsiParibasan" Type="String" MaxLength="300" Unicode="false" FixedLength="false" />
     <Property Name="Artine" Type="String" MaxLength="300" Unicode="false" FixedLength="false" />
+    <Property Name="KategoriId" Type="Int32" />
+    <NavigationProperty Name="Kategori" Relationship="DigitalPepakModel.FK_Paribasan_Kategori" FromRole="Paribasan" ToRole="Kategori" />
   </EntityType>
   <EntityType Name="Parikan">
     <Key>
@@ -66,6 +163,27 @@
     </Key>
     <Property Name="ParikanId" Type="Int32" Nullable="false" />
     <Property Name="IsiParikan" Type="String" MaxLength="300" Unicode="false" FixedLength="false" />
+    <Property Name="KategoriId" Type="Int32" />
+    <NavigationProperty Name="Kategori" Relationship="DigitalPepakModel.FK_Parikan_Kategori" FromRole="Parikan" ToRole="Kategori" />
+  </EntityType>
+  <EntityType Name="Soal">
+    <Key>
+      <PropertyRef Name="SoalId" />
+    </Key>
+    <Property Name="SoalId" Type="Int32" Nullable="false" />
+    <Property Name="KategoriId" Type="Int32" />
+    <Property Name="Score" Type="Int32" />
+    <NavigationProperty Name="DetailKuis" Relationship="DigitalPepakModel.FK_DetailKuis_Soal" FromRole="Soal" ToRole="DetailKuis" />
+    <NavigationProperty Name="Kategori" Relationship="DigitalPepakModel.FK_Kuis_Kategori" FromRole="Soal" ToRole="Kategori" />
+  </EntityType>
+  <EntityType Name="UserDigipak">
+    <Key>
+      <PropertyRef Name="UserId" />
+    </Key>
+    <Property Name="UserId" Type="Int32" Nullable="false" />
+    <Property Name="Username" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="Password" Type="String" MaxLength="32" Unicode="false" FixedLength="false" />
+    <NavigationProperty Name="Kuis" Relationship="DigitalPepakModel.FK_Kuis_UserDigipak" FromRole="UserDigipak" ToRole="Kuis" />
   </EntityType>
   <EntityType Name="Wayang">
     <Key>
@@ -74,5 +192,139 @@
     <Property Name="WayangId" Type="Int32" Nullable="false" />
     <Property Name="JenengWayang" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
     <Property Name="GambarURL" Type="String" MaxLength="150" Unicode="false" FixedLength="false" />
+    <Property Name="KategoriId" Type="Int32" />
+    <NavigationProperty Name="Kategori" Relationship="DigitalPepakModel.FK_Wayang_Kategori" FromRole="Wayang" ToRole="Kategori" />
   </EntityType>
+  <Association Name="FK_DetailKuis_Kuis">
+    <End Role="Kuis" Type="DigitalPepakModel.Kui" Multiplicity="0..1" />
+    <End Role="DetailKuis" Type="DigitalPepakModel.DetailKui" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Kuis">
+        <PropertyRef Name="KuisId" />
+      </Principal>
+      <Dependent Role="DetailKuis">
+        <PropertyRef Name="SoalId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_DetailKuis_Soal">
+    <End Role="Soal" Type="DigitalPepakModel.Soal" Multiplicity="0..1" />
+    <End Role="DetailKuis" Type="DigitalPepakModel.DetailKui" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Soal">
+        <PropertyRef Name="SoalId" />
+      </Principal>
+      <Dependent Role="DetailKuis">
+        <PropertyRef Name="KuisId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Hanacaraka_Kategori">
+    <End Role="Kategori" Type="DigitalPepakModel.Kategori" Multiplicity="0..1" />
+    <End Role="Hanacaraka" Type="DigitalPepakModel.Hanacaraka" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Kategori">
+        <PropertyRef Name="KategoriId" />
+      </Principal>
+      <Dependent Role="Hanacaraka">
+        <PropertyRef Name="KategoriId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_KawruhBasa_Kategori">
+    <End Role="Kategori" Type="DigitalPepakModel.Kategori" Multiplicity="0..1" />
+    <End Role="KawruhBasa" Type="DigitalPepakModel.KawruhBasa" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Kategori">
+        <PropertyRef Name="KategoriId" />
+      </Principal>
+      <Dependent Role="KawruhBasa">
+        <PropertyRef Name="KategoriId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Kewan_Kategori">
+    <End Role="Kategori" Type="DigitalPepakModel.Kategori" Multiplicity="0..1" />
+    <End Role="Kewan" Type="DigitalPepakModel.Kewan" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Kategori">
+        <PropertyRef Name="KategoriId" />
+      </Principal>
+      <Dependent Role="Kewan">
+        <PropertyRef Name="KategoriId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Kuis_Kategori">
+    <End Role="Kategori" Type="DigitalPepakModel.Kategori" Multiplicity="0..1" />
+    <End Role="Soal" Type="DigitalPepakModel.Soal" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Kategori">
+        <PropertyRef Name="KategoriId" />
+      </Principal>
+      <Dependent Role="Soal">
+        <PropertyRef Name="KategoriId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Paramasastra_Kategori">
+    <End Role="Kategori" Type="DigitalPepakModel.Kategori" Multiplicity="0..1" />
+    <End Role="Paramasastra" Type="DigitalPepakModel.Paramasastra" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Kategori">
+        <PropertyRef Name="KategoriId" />
+      </Principal>
+      <Dependent Role="Paramasastra">
+        <PropertyRef Name="KategoriId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Paribasan_Kategori">
+    <End Role="Kategori" Type="DigitalPepakModel.Kategori" Multiplicity="0..1" />
+    <End Role="Paribasan" Type="DigitalPepakModel.Paribasan" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Kategori">
+        <PropertyRef Name="KategoriId" />
+      </Principal>
+      <Dependent Role="Paribasan">
+        <PropertyRef Name="KategoriId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Parikan_Kategori">
+    <End Role="Kategori" Type="DigitalPepakModel.Kategori" Multiplicity="0..1" />
+    <End Role="Parikan" Type="DigitalPepakModel.Parikan" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Kategori">
+        <PropertyRef Name="KategoriId" />
+      </Principal>
+      <Dependent Role="Parikan">
+        <PropertyRef Name="KategoriId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Wayang_Kategori">
+    <End Role="Kategori" Type="DigitalPepakModel.Kategori" Multiplicity="0..1" />
+    <End Role="Wayang" Type="DigitalPepakModel.Wayang" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Kategori">
+        <PropertyRef Name="KategoriId" />
+      </Principal>
+      <Dependent Role="Wayang">
+        <PropertyRef Name="KategoriId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Kuis_UserDigipak">
+    <End Role="UserDigipak" Type="DigitalPepakModel.UserDigipak" Multiplicity="0..1" />
+    <End Role="Kuis" Type="DigitalPepakModel.Kui" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="UserDigipak">
+        <PropertyRef Name="UserId" />
+      </Principal>
+      <Dependent Role="Kuis">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
 </Schema>

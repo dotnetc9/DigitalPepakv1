@@ -11,12 +11,13 @@ namespace DigitalPepak
 {
     public class KewanController : Controller
     {
-        private DigitalPepakEntities db = new DigitalPepakEntities();
+        private DigitalPepakEntities1 db = new DigitalPepakEntities1();
 
         // GET: /Kewan/
         public ActionResult Index()
         {
-            return View(db.Kewans.ToList());
+            var kewans = db.Kewans.Include(k => k.Kategori);
+            return View(kewans.ToList());
         }
 
         // GET: /Kewan/Details/5
@@ -37,6 +38,7 @@ namespace DigitalPepak
         // GET: /Kewan/Create
         public ActionResult Create()
         {
+            ViewBag.KategoriId = new SelectList(db.Kategoris, "KategoriId", "Jenis");
             return View();
         }
 
@@ -45,7 +47,7 @@ namespace DigitalPepak
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include="KewanId,JenengKewan,AnakeKewan")] Kewan kewan)
+        public ActionResult Create([Bind(Include="KewanId,JenengKewan,AnakeKewan,KategoriId")] Kewan kewan)
         {
             if (ModelState.IsValid)
             {
@@ -54,6 +56,7 @@ namespace DigitalPepak
                 return RedirectToAction("Index");
             }
 
+            ViewBag.KategoriId = new SelectList(db.Kategoris, "KategoriId", "Jenis", kewan.KategoriId);
             return View(kewan);
         }
 
@@ -69,6 +72,7 @@ namespace DigitalPepak
             {
                 return HttpNotFound();
             }
+            ViewBag.KategoriId = new SelectList(db.Kategoris, "KategoriId", "Jenis", kewan.KategoriId);
             return View(kewan);
         }
 
@@ -77,7 +81,7 @@ namespace DigitalPepak
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include="KewanId,JenengKewan,AnakeKewan")] Kewan kewan)
+        public ActionResult Edit([Bind(Include="KewanId,JenengKewan,AnakeKewan,KategoriId")] Kewan kewan)
         {
             if (ModelState.IsValid)
             {
@@ -85,6 +89,7 @@ namespace DigitalPepak
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
+            ViewBag.KategoriId = new SelectList(db.Kategoris, "KategoriId", "Jenis", kewan.KategoriId);
             return View(kewan);
         }
 

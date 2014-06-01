@@ -17,5 +17,8 @@ namespace DigitalPepak
         public int WayangId { get; set; }
         public string JenengWayang { get; set; }
         public string GambarURL { get; set; }
+        public Nullable<int> KategoriId { get; set; }
+    
+        public virtual Kategori Kategori { get; set; }
     }
 }

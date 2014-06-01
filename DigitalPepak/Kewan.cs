@@ -17,5 +17,8 @@ namespace DigitalPepak
         public int KewanId { get; set; }
         public string JenengKewan { get; set; }
         public string AnakeKewan { get; set; }
+        public Nullable<int> KategoriId { get; set; }
+    
+        public virtual Kategori Kategori { get; set; }
     }
 }

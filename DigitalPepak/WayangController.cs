@@ -11,12 +11,13 @@ namespace DigitalPepak
 {
     public class WayangController : Controller
     {
-        private DigitalPepakEntities db = new DigitalPepakEntities();
+        private DigitalPepakEntities1 db = new DigitalPepakEntities1();
 
         // GET: /Wayang/
         public ActionResult Index()
         {
-            return View(db.Wayangs.ToList());
+            var wayangs = db.Wayangs.Include(w => w.Kategori);
+            return View(wayangs.ToList());
         }
 
         // GET: /Wayang/Details/5
@@ -37,6 +38,7 @@ namespace DigitalPepak
         // GET: /Wayang/Create
         public ActionResult Create()
         {
+            ViewBag.KategoriId = new SelectList(db.Kategoris, "KategoriId", "Jenis");
             return View();
         }
 
@@ -45,7 +47,7 @@ namespace DigitalPepak
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include="WayangId,JenengWayang,GambarURL")] Wayang wayang)
+        public ActionResult Create([Bind(Include="WayangId,JenengWayang,GambarURL,KategoriId")] Wayang wayang)
         {
             if (ModelState.IsValid)
             {
@@ -54,6 +56,7 @@ namespace DigitalPepak
                 return RedirectToAction("Index");
             }
 
+            ViewBag.KategoriId = new SelectList(db.Kategoris, "KategoriId", "Jenis", wayang.KategoriId);
             return View(wayang);
         }
 
@@ -69,6 +72,7 @@ namespace DigitalPepak
             {
                 return HttpNotFound();
             }
+            ViewBag.KategoriId = new SelectList(db.Kategoris, "KategoriId", "Jenis", wayang.KategoriId);
             return View(wayang);
         }
 
@@ -77,7 +81,7 @@ namespace DigitalPepak
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include="WayangId,JenengWayang,GambarURL")] Wayang wayang)
+        public ActionResult Edit([Bind(Include="WayangId,JenengWayang,GambarURL,KategoriId")] Wayang wayang)
         {
             if (ModelState.IsValid)
             {
@@ -85,6 +89,7 @@ namespace DigitalPepak
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
+            ViewBag.KategoriId = new SelectList(db.Kategoris, "KategoriId", "Jenis", wayang.KategoriId);
             return View(wayang);
         }
 

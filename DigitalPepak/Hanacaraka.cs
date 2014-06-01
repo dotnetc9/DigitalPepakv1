@@ -17,6 +17,8 @@ namespace DigitalPepak
         public int HanacarakaId { get; set; }
         public string Aksara { get; set; }
         public string GambarURL { get; set; }
-        public string SuaraURL { get; set; }
+        public Nullable<int> KategoriId { get; set; }
+    
+        public virtual Kategori Kategori { get; set; }
     }
 }

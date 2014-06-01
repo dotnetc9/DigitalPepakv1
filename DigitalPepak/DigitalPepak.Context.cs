@@ -16,10 +16,10 @@ namespace DigitalPepak
     using System.Data.Objects.DataClasses;
     using System.Linq;
     
-    public partial class DigitalPepakEntities : DbContext
+    public partial class DigitalPepakEntities1 : DbContext
     {
-        public DigitalPepakEntities()
-            : base("name=DigitalPepakEntities")
+        public DigitalPepakEntities1()
+            : base("name=DigitalPepakEntities1")
         {
         }
     
@@ -28,13 +28,23 @@ namespace DigitalPepak
             throw new UnintentionalCodeFirstException();
         }
     
+        public DbSet<DetailKui> DetailKuis { get; set; }
         public DbSet<Hanacaraka> Hanacarakas { get; set; }
+        public DbSet<Kategori> Kategoris { get; set; }
         public DbSet<KawruhBasa> KawruhBasas { get; set; }
         public DbSet<Kewan> Kewans { get; set; }
+        public DbSet<Kui> Kuis { get; set; }
         public DbSet<Paramasastra> Paramasastras { get; set; }
         public DbSet<Paribasan> Paribasans { get; set; }
         public DbSet<Parikan> Parikans { get; set; }
+        public DbSet<Soal> Soals { get; set; }
+        public DbSet<UserDigipak> UserDigipaks { get; set; }
         public DbSet<Wayang> Wayangs { get; set; }
+    
+        public virtual ObjectResult<Nullable<int>> GetNewDetailKuisId()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<int>>("GetNewDetailKuisId");
+        }
     
         public virtual ObjectResult<Nullable<int>> GetNewHanacarakaId()
         {
@@ -51,6 +61,11 @@ namespace DigitalPepak
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<int>>("GetNewKewanId");
         }
     
+        public virtual ObjectResult<Nullable<int>> GetNewKuisId()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<int>>("GetNewKuisId");
+        }
+    
         public virtual ObjectResult<Nullable<int>> GetNewParamasastraId()
         {
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<int>>("GetNewParamasastraId");
@@ -64,6 +79,16 @@ namespace DigitalPepak
         public virtual ObjectResult<Nullable<int>> GetNewParikanId()
         {
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<int>>("GetNewParikanId");
+        }
+    
+        public virtual ObjectResult<Nullable<int>> GetNewSoalId()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<int>>("GetNewSoalId");
+        }
+    
+        public virtual ObjectResult<Nullable<int>> GetNewUserId()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<int>>("GetNewUserId");
         }
     
         public virtual ObjectResult<Nullable<int>> GetNewWayangId()

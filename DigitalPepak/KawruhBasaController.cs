@@ -11,12 +11,13 @@ namespace DigitalPepak
 {
     public class KawruhBasaController : Controller
     {
-        private DigitalPepakEntities db = new DigitalPepakEntities();
+        private DigitalPepakEntities1 db = new DigitalPepakEntities1();
 
         // GET: /KawruhBasa/
         public ActionResult Index()
         {
-            return View(db.KawruhBasas.ToList());
+            var kawruhbasas = db.KawruhBasas.Include(k => k.Kategori);
+            return View(kawruhbasas.ToList());
         }
 
         // GET: /KawruhBasa/Details/5
@@ -37,6 +38,7 @@ namespace DigitalPepak
         // GET: /KawruhBasa/Create
         public ActionResult Create()
         {
+            ViewBag.KategoriId = new SelectList(db.Kategoris, "KategoriId", "Jenis");
             return View();
         }
 
@@ -45,7 +47,7 @@ namespace DigitalPepak
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include="KawruhBasaId,Tembung,PodhoTegese,KosokBalen")] KawruhBasa kawruhbasa)
+        public ActionResult Create([Bind(Include="KawruhBasaId,Tembung,PodhoTegese,KosokBalen,KategoriId")] KawruhBasa kawruhbasa)
         {
             if (ModelState.IsValid)
             {
@@ -54,6 +56,7 @@ namespace DigitalPepak
                 return RedirectToAction("Index");
             }
 
+            ViewBag.KategoriId = new SelectList(db.Kategoris, "KategoriId", "Jenis", kawruhbasa.KategoriId);
             return View(kawruhbasa);
         }
 
@@ -69,6 +72,7 @@ namespace DigitalPepak
             {
                 return HttpNotFound();
             }
+            ViewBag.KategoriId = new SelectList(db.Kategoris, "KategoriId", "Jenis", kawruhbasa.KategoriId);
             return View(kawruhbasa);
         }
 
@@ -77,7 +81,7 @@ namespace DigitalPepak
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include="KawruhBasaId,Tembung,PodhoTegese,KosokBalen")] KawruhBasa kawruhbasa)
+        public ActionResult Edit([Bind(Include="KawruhBasaId,Tembung,PodhoTegese,KosokBalen,KategoriId")] KawruhBasa kawruhbasa)
         {
             if (ModelState.IsValid)
             {
@@ -85,6 +89,7 @@ namespace DigitalPepak
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
+            ViewBag.KategoriId = new SelectList(db.Kategoris, "KategoriId", "Jenis", kawruhbasa.KategoriId);
             return View(kawruhbasa);
         }
 

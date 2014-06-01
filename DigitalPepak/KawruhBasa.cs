@@ -18,5 +18,8 @@ namespace DigitalPepak
         public string Tembung { get; set; }
         public string PodhoTegese { get; set; }
         public string KosokBalen { get; set; }
+        public Nullable<int> KategoriId { get; set; }
+    
+        public virtual Kategori Kategori { get; set; }
     }
 }

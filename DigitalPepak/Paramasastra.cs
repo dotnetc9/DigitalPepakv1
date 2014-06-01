@@ -19,5 +19,8 @@ namespace DigitalPepak
         public string Madya { get; set; }
         public string Inggil { get; set; }
         public string Indonesia { get; set; }
+        public Nullable<int> KategoriId { get; set; }
+    
+        public virtual Kategori Kategori { get; set; }
     }
 }

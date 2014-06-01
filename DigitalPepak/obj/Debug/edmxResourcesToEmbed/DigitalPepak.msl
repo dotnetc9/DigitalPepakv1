@@ -1,13 +1,30 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-  <EntityContainerMapping StorageEntityContainer="DigitalPepakModelStoreContainer" CdmEntityContainer="DigitalPepakEntities">
+  <EntityContainerMapping StorageEntityContainer="DigitalPepakModelStoreContainer" CdmEntityContainer="DigitalPepakEntities1">
+    <EntitySetMapping Name="DetailKuis">
+      <EntityTypeMapping TypeName="DigitalPepakModel.DetailKui">
+        <MappingFragment StoreEntitySet="DetailKuis">
+          <ScalarProperty Name="DetailKuisId" ColumnName="DetailKuisId" />
+          <ScalarProperty Name="KuisId" ColumnName="KuisId" />
+          <ScalarProperty Name="SoalId" ColumnName="SoalId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
     <EntitySetMapping Name="Hanacarakas">
       <EntityTypeMapping TypeName="DigitalPepakModel.Hanacaraka">
         <MappingFragment StoreEntitySet="Hanacaraka">
           <ScalarProperty Name="HanacarakaId" ColumnName="HanacarakaId" />
           <ScalarProperty Name="Aksara" ColumnName="Aksara" />
           <ScalarProperty Name="GambarURL" ColumnName="GambarURL" />
-          <ScalarProperty Name="SuaraURL" ColumnName="SuaraURL" />
+          <ScalarProperty Name="KategoriId" ColumnName="KategoriId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Kategoris">
+      <EntityTypeMapping TypeName="DigitalPepakModel.Kategori">
+        <MappingFragment StoreEntitySet="Kategori">
+          <ScalarProperty Name="KategoriId" ColumnName="KategoriId" />
+          <ScalarProperty Name="Jenis" ColumnName="Jenis" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -18,6 +35,7 @@
           <ScalarProperty Name="Tembung" ColumnName="Tembung" />
           <ScalarProperty Name="PodhoTegese" ColumnName="PodhoTegese" />
           <ScalarProperty Name="KosokBalen" ColumnName="KosokBalen" />
+          <ScalarProperty Name="KategoriId" ColumnName="KategoriId" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -27,6 +45,16 @@
           <ScalarProperty Name="KewanId" ColumnName="KewanId" />
           <ScalarProperty Name="JenengKewan" ColumnName="JenengKewan" />
           <ScalarProperty Name="AnakeKewan" ColumnName="AnakeKewan" />
+          <ScalarProperty Name="KategoriId" ColumnName="KategoriId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Kuis">
+      <EntityTypeMapping TypeName="DigitalPepakModel.Kui">
+        <MappingFragment StoreEntitySet="Kuis">
+          <ScalarProperty Name="KuisId" ColumnName="KuisId" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="TotalScore" ColumnName="TotalScore" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -38,6 +66,7 @@
           <ScalarProperty Name="Madya" ColumnName="Madya" />
           <ScalarProperty Name="Inggil" ColumnName="Inggil" />
           <ScalarProperty Name="Indonesia" ColumnName="Indonesia" />
+          <ScalarProperty Name="KategoriId" ColumnName="KategoriId" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -47,6 +76,7 @@
           <ScalarProperty Name="ParibasanId" ColumnName="ParibasanId" />
           <ScalarProperty Name="IsiParibasan" ColumnName="IsiParibasan" />
           <ScalarProperty Name="Artine" ColumnName="Artine" />
+          <ScalarProperty Name="KategoriId" ColumnName="KategoriId" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -55,6 +85,25 @@
         <MappingFragment StoreEntitySet="Parikan">
           <ScalarProperty Name="ParikanId" ColumnName="ParikanId" />
           <ScalarProperty Name="IsiParikan" ColumnName="IsiParikan" />
+          <ScalarProperty Name="KategoriId" ColumnName="KategoriId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Soals">
+      <EntityTypeMapping TypeName="DigitalPepakModel.Soal">
+        <MappingFragment StoreEntitySet="Soal">
+          <ScalarProperty Name="SoalId" ColumnName="SoalId" />
+          <ScalarProperty Name="KategoriId" ColumnName="KategoriId" />
+          <ScalarProperty Name="Score" ColumnName="Score" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="UserDigipaks">
+      <EntityTypeMapping TypeName="DigitalPepakModel.UserDigipak">
+        <MappingFragment StoreEntitySet="UserDigipak">
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="Username" ColumnName="Username" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -64,15 +113,20 @@
           <ScalarProperty Name="WayangId" ColumnName="WayangId" />
           <ScalarProperty Name="JenengWayang" ColumnName="JenengWayang" />
           <ScalarProperty Name="GambarURL" ColumnName="GambarURL" />
+          <ScalarProperty Name="KategoriId" ColumnName="KategoriId" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="GetNewDetailKuisId" FunctionName="DigitalPepakModel.Store.GetNewDetailKuisId" />
     <FunctionImportMapping FunctionImportName="GetNewHanacarakaId" FunctionName="DigitalPepakModel.Store.GetNewHanacarakaId" />
     <FunctionImportMapping FunctionImportName="GetNewKawruhBasaId" FunctionName="DigitalPepakModel.Store.GetNewKawruhBasaId" />
     <FunctionImportMapping FunctionImportName="GetNewKewanId" FunctionName="DigitalPepakModel.Store.GetNewKewanId" />
+    <FunctionImportMapping FunctionImportName="GetNewKuisId" FunctionName="DigitalPepakModel.Store.GetNewKuisId" />
     <FunctionImportMapping FunctionImportName="GetNewParamasastraId" FunctionName="DigitalPepakModel.Store.GetNewParamasastraId" />
     <FunctionImportMapping FunctionImportName="GetNewParibasanId" FunctionName="DigitalPepakModel.Store.GetNewParibasanId" />
     <FunctionImportMapping FunctionImportName="GetNewParikanId" FunctionName="DigitalPepakModel.Store.GetNewParikanId" />
+    <FunctionImportMapping FunctionImportName="GetNewSoalId" FunctionName="DigitalPepakModel.Store.GetNewSoalId" />
+    <FunctionImportMapping FunctionImportName="GetNewUserId" FunctionName="DigitalPepakModel.Store.GetNewUserId" />
     <FunctionImportMapping FunctionImportName="GetNewWayangId" FunctionName="DigitalPepakModel.Store.GetNewWayangId" />
   </EntityContainerMapping>
 </Mapping>

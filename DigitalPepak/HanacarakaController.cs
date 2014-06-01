@@ -11,12 +11,13 @@ namespace DigitalPepak
 {
     public class HanacarakaController : Controller
     {
-        private DigitalPepakEntities db = new DigitalPepakEntities();
+        private DigitalPepakEntities1 db = new DigitalPepakEntities1();
 
         // GET: /Hanacaraka/
         public ActionResult Index()
         {
-            return View(db.Hanacarakas.ToList());
+            var hanacarakas = db.Hanacarakas.Include(h => h.Kategori);
+            return View(hanacarakas.ToList());
         }
 
         // GET: /Hanacaraka/Details/5
@@ -37,6 +38,7 @@ namespace DigitalPepak
         // GET: /Hanacaraka/Create
         public ActionResult Create()
         {
+            ViewBag.KategoriId = new SelectList(db.Kategoris, "KategoriId", "Jenis");
             return View();
         }
 
@@ -45,7 +47,7 @@ namespace DigitalPepak
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include="HanacarakaId,Aksara,GambarURL,SuaraURL")] Hanacaraka hanacaraka)
+        public ActionResult Create([Bind(Include="HanacarakaId,Aksara,GambarURL,KategoriId")] Hanacaraka hanacaraka)
         {
             if (ModelState.IsValid)
             {
@@ -54,6 +56,7 @@ namespace DigitalPepak
                 return RedirectToAction("Index");
             }
 
+            ViewBag.KategoriId = new SelectList(db.Kategoris, "KategoriId", "Jenis", hanacaraka.KategoriId);
             return View(hanacaraka);
         }
 
@@ -69,6 +72,7 @@ namespace DigitalPepak
             {
                 return HttpNotFound();
             }
+            ViewBag.KategoriId = new SelectList(db.Kategoris, "KategoriId", "Jenis", hanacaraka.KategoriId);
             return View(hanacaraka);
         }
 
@@ -77,7 +81,7 @@ namespace DigitalPepak
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include="HanacarakaId,Aksara,GambarURL,SuaraURL")] Hanacaraka hanacaraka)
+        public ActionResult Edit([Bind(Include="HanacarakaId,Aksara,GambarURL,KategoriId")] Hanacaraka hanacaraka)
         {
             if (ModelState.IsValid)
             {
@@ -85,6 +89,7 @@ namespace DigitalPepak
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
+            ViewBag.KategoriId = new SelectList(db.Kategoris, "KategoriId", "Jenis", hanacaraka.KategoriId);
             return View(hanacaraka);
         }
 
